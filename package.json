@@ -1,0 +1,24 @@
+{
+  "name": "urban-flood-monitoring",
+  "version": "1.0.0",
+  "description": "城市内涝监测预警系统",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "simulate": "node data-simulator.js",
+    "init-db": "psql -U postgres -f init.sql"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.5.1",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "axios": "^1.6.2",
+    "nodemon": "^3.0.2"
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "points": [
+    {
+      "id": 1,
+      "code": "P001",
+      "name": "人民路与建设路交叉口",
+      "address": "人民路与建设路交叉口东南角",
+      "lng": 116.397,
+      "lat": 39.908,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 2,
+      "code": "P002",
+      "name": "火车站站前广场",
+      "address": "火车站站前广场地下通道入口",
+      "lng": 116.405,
+      "lat": 39.912,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 3,
+      "code": "P003",
+      "name": "市政府门前",
+      "address": "市政府门前辅路",
+      "lng": 116.392,
+      "lat": 39.915,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 4,
+      "code": "P004",
+      "name": "中心公园北门",
+      "address": "中心公园北门地下车库入口",
+      "lng": 116.400,
+      "lat": 39.920,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 5,
+      "code": "P005",
+      "name": "商业步行街北口",
+      "address": "商业步行街北口",
+      "lng": 116.408,
+      "lat": 39.916,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 6,
+      "code": "P006",
+      "name": "第一中学门口",
+      "address": "第一中学门口人行道",
+      "lng": 116.385,
+      "lat": 39.910,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 7,
+      "code": "P007",
+      "name": "人民医院急诊入口",
+      "address": "人民医院急诊入口处",
+      "lng": 116.395,
+      "lat": 39.898,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 8,
+      "code": "P008",
+      "name": "体育馆西门",
+      "address": "体育馆西门停车场入口",
+      "lng": 116.415,
+      "lat": 39.905,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 9,
+      "code": "P009",
+      "name": "立交桥下",
+      "address": "东三环立交桥下辅路",
+      "lng": 116.420,
+      "lat": 39.918,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 10,
+      "code": "P010",
+      "name": "地铁站出口",
+      "address": "地铁1号线中心站A出口",
+      "lng": 116.402,
+      "lat": 39.905,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 11,
+      "code": "P011",
+      "name": "科技园区南门",
+      "address": "科技园区南门主干道",
+      "lng": 116.380,
+      "lat": 39.925,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 12,
+      "code": "P012",
+      "name": "居民区入口",
+      "address": "阳光花园小区入口",
+      "lng": 116.410,
+      "lat": 39.895,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 13,
+      "code": "P013",
+      "name": "高速出口",
+      "address": "京通高速城区出口辅路",
+      "lng": 116.425,
+      "lat": 39.890,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 14,
+      "code": "P014",
+      "name": "批发市场门前",
+      "address": "东郊批发市场北门",
+      "lng": 116.375,
+      "lat": 39.900,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 15,
+      "code": "P015",
+      "name": "旅游景区入口",
+      "address": "古城景区主入口",
+      "lng": 116.388,
+      "lat": 39.922,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 16,
+      "code": "P016",
+      "name": "购物中心停车场",
+      "address": "万达广场地下停车场入口",
+      "lng": 116.412,
+      "lat": 39.910,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 17,
+      "code": "P017",
+      "name": "公交枢纽",
+      "address": "城西公交枢纽站",
+      "lng": 116.370,
+      "lat": 39.908,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 18,
+      "code": "P018",
+      "name": "工业区主干道",
+      "address": "经济开发区核心路段",
+      "lng": 116.430,
+      "lat": 39.922,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 19,
+      "code": "P019",
+      "name": "河岸边道路",
+      "address": "通惠河南岸沿河路",
+      "lng": 116.406,
+      "lat": 39.888,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    },
+    {
+      "id": 20,
+      "code": "P020",
+      "name": "学校周边路段",
+      "address": "实验小学周边路段",
+      "lng": 116.382,
+      "lat": 39.895,
+      "thresholdOrange": 15,
+      "thresholdRed": 30
+    }
+  ],
+  "mapBounds": {
+    "minLng": 116.365,
+    "maxLng": 116.440,
+    "minLat": 39.880,
+    "maxLat": 39.935
+  },
+  "prediction": {
+    "orangePredictionThreshold": 25,
+    "predictionTimeMinutes": 30,
+    "rainfallInfluence": 0.3,
+    "rateInfluence": 0.7
+  }
+}

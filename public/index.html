@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>城市内涝监测预警系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🏞️ 城市内涝监测预警系统</h1>
+            <div class="header-info">
+                <span id="currentTime"></span>
+                <span class="status-dot online"></span>
+                <span>系统在线</span>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3>📍 状态图例</h3>
+                    <div class="legend">
+                        <div class="legend-item">
+                            <span class="legend-dot green"></span>
+                            <span>正常 (&lt; 5cm)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot yellow"></span>
+                            <span>预警 (5-15cm)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot orange"></span>
+                            <span>橙色告警 (≥15cm)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot red"></span>
+                            <span>红色告警 (≥30cm)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot orange-prediction"></span>
+                            <span>预测预警</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>🚨 活动告警</h3>
+                    <div id="activeAlerts" class="alerts-list">
+                        <div class="empty-state">暂无告警</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>📊 告警查询</h3>
+                    <div class="filter-form">
+                        <div class="form-group">
+                            <label>告警级别</label>
+                            <select id="alertLevelFilter">
+                                <option value="all">全部</option>
+                                <option value="red">红色</option>
+                                <option value="orange">橙色</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>开始时间</label>
+                            <input type="datetime-local" id="startDateFilter">
+                        </div>
+                        <div class="form-group">
+                            <label>结束时间</label>
+                            <input type="datetime-local" id="endDateFilter">
+                        </div>
+                        <button id="searchAlertsBtn" class="btn btn-primary">查询</button>
+                    </div>
+                    <div id="alertHistory" class="alerts-history">
+                    </div>
+                </div>
+            </aside>
+
+            <main class="map-container">
+                <canvas id="mapCanvas"></canvas>
+                <div class="map-controls">
+                    <button id="zoomIn" class="map-btn">+</button>
+                    <button id="zoomOut" class="map-btn">-</button>
+                    <button id="resetView" class="map-btn">⟲</button>
+                </div>
+                <div class="stats-panel">
+                    <div class="stat-item">
+                        <span class="stat-label">监控点位</span>
+                        <span class="stat-value" id="totalPoints">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">正常</span>
+                        <span class="stat-value green" id="normalPoints">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">预警</span>
+                        <span class="stat-value yellow" id="warningPoints">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">告警</span>
+                        <span class="stat-value red" id="alertPoints">0</span>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="pointModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">点位详情</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="point-info">
+                    <div class="info-row">
+                        <span class="label">点位编号:</span>
+                        <span id="pointCode"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">点位名称:</span>
+                        <span id="pointName"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">当前水位:</span>
+                        <span id="pointWaterLevel" class="level-value">-- cm</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">预测峰值:</span>
+                        <span id="pointPredicted" class="level-value">-- cm</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">1小时雨量:</span>
+                        <span id="pointRainfall">-- mm</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">最后更新:</span>
+                        <span id="pointLastUpdate">--</span>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <h3>📈 近2小时水位变化</h3>
+                    <canvas id="chartCanvas" width="500" height="200"></canvas>
+                </div>
+
+                <div class="records-section">
+                    <h3>📋 最近10次积水记录</h3>
+                    <div id="floodRecords" class="records-table">
+                        <div class="empty-state">暂无积水记录</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

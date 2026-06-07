@@ -1,0 +1,89 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: flood-monitoring-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=flood_monitoring
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - flood-net
+
+  postgres:
+    image: postgis/postgis:15-3.4-alpine
+    container_name: flood-monitoring-db
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=flood_monitoring
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+      - ./backup:/backup
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d flood_monitoring"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - flood-net
+
+  backup:
+    image: postgis/postgis:15-3.4-alpine
+    container_name: flood-monitoring-backup
+    restart: unless-stopped
+    environment:
+      - PGPASSWORD=postgres
+    volumes:
+      - ./backup:/backup
+    entrypoint: >
+      /bin/sh -c "
+        while true; do
+          TIMESTAMP=$$(date +%Y%m%d_%H%M%S);
+          pg_dump -h postgres -U postgres -d flood_monitoring -F c -f /backup/flood_monitoring_$$TIMESTAMP.dump;
+          echo \"[backup] $$TIMESTAMP completed\";
+          find /backup -name '*.dump' -mtime +7 -delete;
+          echo \"[cleanup] removed backups older than 7 days\";
+          sleep 86400;
+        done
+      "
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - flood-net
+
+  simulator:
+    build: .
+    container_name: flood-monitoring-simulator
+    restart: unless-stopped
+    environment:
+      - API_BASE_URL=http://app:3000/api
+      - MODE=normal
+    entrypoint: ["node", "data-simulator.js"]
+    depends_on:
+      - app
+    networks:
+      - flood-net
+
+volumes:
+  pgdata:
+
+networks:
+  flood-net:
+    driver: bridge
